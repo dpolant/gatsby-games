@@ -5,4 +5,4 @@ rating: '4'
 platform:
   - PC
 ---
-Katana zero is awesome!
+Katana zero is awesome! dd
