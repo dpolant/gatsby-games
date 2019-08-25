@@ -1,10 +1,12 @@
 import React from "react"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
+import Img from "../components/PreviewCompatibleImage"
 
-const GameTemplate = ({title}) => (
+const GameTemplate = ({title, image}) => (
   <>
     <h1>{title}</h1>
+    <Img imageInfo={{image, alt: "alt text"}} />
     <div>Lorem ipsum</div>
   </>
 )
@@ -14,7 +16,10 @@ const Game = ({data}) => {
 
   return (
     <Layout>
-      <GameTemplate title={game.frontmatter.title} />
+      <GameTemplate
+        title={game.frontmatter.title}
+        image={game.frontmatter.image}
+      />
     </Layout>
   )
 }
@@ -27,6 +32,13 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1200) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
