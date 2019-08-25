@@ -5,6 +5,6 @@ releaseDate: 2019-08-24T23:39:33.236Z
 rating: '5'
 platform:
   - PC
-image: /img/katana-zero.jpg
+image: /img/dark-forces.jpg
 ---
 Sweet game.
