@@ -2,12 +2,18 @@ import React from "react"
 import {graphql} from "gatsby"
 import Layout from "../components/Layout"
 import Img from "../components/PreviewCompatibleImage"
+import Container from "@material-ui/core/Container"
+import Typography from "@material-ui/core/Typography"
 
 const GameTemplate = ({title, image}) => (
   <>
-    <h1>{title}</h1>
     <Img imageInfo={{image, alt: "alt text"}} />
-    <div>Lorem ipsum</div>
+    <Container maxWidth="sm">
+      <Typography variant="h2" gutterBottom>
+        {title}
+      </Typography>
+      <Typography variant="body1">Lorem ipsum</Typography>
+    </Container>
   </>
 )
 

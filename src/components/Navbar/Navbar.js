@@ -1,4 +1,5 @@
 import React from "react"
+import Appbar from "../Appbar"
 
 const Navbar = class extends React.Component {
   render() {
@@ -8,7 +9,7 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        NAVBAR
+        <Appbar />
       </nav>
     )
   }

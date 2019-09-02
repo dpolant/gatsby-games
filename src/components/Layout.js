@@ -1,53 +1,70 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import useSiteMetadata from './SiteMetadata'
-import { withPrefix } from "gatsby"
+import React from "react"
+import {Helmet} from "react-helmet"
+import Footer from "../components/Footer"
+import Navbar from "./Navbar/Navbar"
+import useSiteMetadata from "./SiteMetadata"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import {createMuiTheme} from "@material-ui/core/styles"
+import {ThemeProvider} from "@material-ui/styles"
+import purple from "@material-ui/core/colors/purple"
+import green from "@material-ui/core/colors/green"
+import "typeface-roboto"
+import {withPrefix} from "gatsby"
 
-const TemplateWrapper = ({ children }) => {
-  const { title, description } = useSiteMetadata()
+const defaultTheme = createMuiTheme()
+const theme = createMuiTheme({
+  palette: {
+    primary: purple,
+    secondary: green,
+  },
+  overrides: {
+    MuiContainer: {
+      maxWidthSm: {
+        [defaultTheme.breakpoints.up("sm")]: {
+          maxWidth: 1000,
+        },
+      },
+    },
+    MuiTypography: {
+      body1: {
+        fontFamily: "Rokkitt",
+        fontSize: "1.5em",
+      },
+    },
+  },
+})
+
+const TemplateWrapper = ({children}) => {
+  const {title, description} = useSiteMetadata()
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
-
         <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={`${withPrefix("/")}img/apple-touch-icon.png`}
+          href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap"
+          rel="stylesheet"
         />
         <link
-          rel="icon"
-          type="image/png"
-          href={`${withPrefix("/")}img/favicon-32x32.png`}
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href={`${withPrefix("/")}img/favicon-16x16.png`}
-          sizes="16x16"
-        />
-
-        <link
-          rel="mask-icon"
-          href={`${withPrefix("/")}img/safari-pinned-tab.svg`}
-          color="#ff4400"
-        />
+          href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap"
+          rel="stylesheet"
+        ></link>
         <meta name="theme-color" content="#fff" />
 
         <meta property="og:type" content="business.business" />
         <meta property="og:title" content={title} />
         <meta property="og:url" content="/" />
-        <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
+        <meta
+          property="og:image"
+          content={`${withPrefix("/")}img/og-image.jpg`}
+        />
       </Helmet>
       <Navbar />
       <div>{children}</div>
       <Footer />
-    </div>
+    </ThemeProvider>
   )
 }
 
