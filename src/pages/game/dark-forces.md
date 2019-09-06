@@ -26,7 +26,7 @@ content:
       in cursus turpis massa tincidunt. Dui accumsan sit amet nulla facilisi
       morbi tempus iaculis. Leo vel orci porta non pulvinar neque laoreet
       suspendisse.
-    text: TEST
+    text: TEST first one
     type: textBlock
   - Image: /img/darkforces-blaster.jpg
     caption: Blasting stormtroopers on the top of the first level.
